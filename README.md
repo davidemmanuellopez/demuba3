@@ -2,5 +2,5 @@
 
 A Automatic Demonstrator written in Prolog
 
-Copyright (C) <2022  David Emmanuel Lopez
+Copyright (C) 2022  David Emmanuel Lopez
     
