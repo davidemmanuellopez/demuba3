@@ -1,4 +1,4 @@
-# demuba3
+# Demuba3
 
 A Automatic Demonstrator written in Prolog
 
