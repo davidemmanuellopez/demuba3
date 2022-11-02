@@ -19,4 +19,4 @@ Copyright (C) 2022  David Emmanuel Lopez
 
 # Instructions
 
-In progress, you can check the document on ./doc folder of spanish instructions and full specification of software.
+In progress, you can check the document on ./doc folder for spanish instructions and full specification of software.
