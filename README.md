@@ -16,3 +16,7 @@ Copyright (C) 2022  David Emmanuel Lopez
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#Instructions
+
+In progress, you can check the document on ./doc folder of spanish instructions and full specification of software.
