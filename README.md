@@ -19,6 +19,8 @@ Copyright (C) 2022  David Emmanuel Lopez
 
 # Instructions
 
+For a full specification, you can read the document in /doc (Spanish). For a quick experiment, you can follow the next instructions:
+
 * First, compile extern predicates with compile.sh or compile.bat. You need to have installed swi-prolog. For Ubuntu Linux, you can use "apt-get install swi-prolog" for install.
 * Run demuba3 with demuba3.sh, the script load the foreign library library and consult demuba3.pl.
 * Make a query, like "/- -(a & b) v (a & b):L. ". The query example ask if the formula " -(a & b) v (a & b) " is tautology, the L variable return the number of rules used by the demonstrator, when return sucess (tautology), that is for performance experiments.
