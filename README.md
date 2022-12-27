@@ -19,4 +19,6 @@ Copyright (C) 2022  David Emmanuel Lopez
 
 # Instructions
 
-In progress, you can check the document on ./doc folder for spanish instructions and full specification of software.
+* First, compile extern predicates with compile.sh or compile.bat. You need to have installed swi-prolog. For Ubuntu Linux, you can use "apt-get install swi-prolog" for install.
+* Run demuba3 with demuba3.sh, the script load the foreign library library and consult demuba3.pl.
+* Make a query, like "/- -(a & b) v (a & b):L. "
