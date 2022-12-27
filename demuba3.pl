@@ -1,4 +1,4 @@
-/*
+/**
     A Automatic Demonstrator written in Prolog
     Copyright (C) <2022  David Emmanuel Lopez
     http://www.github.com/davidemmanuellopez/demuba3
@@ -17,15 +17,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-% Esta versión contiene una nueva codificación del predicado prom.
-% La versión original daba como resultado una versión más abreviada
-% del resolvente no clausal.
-% Ahora en cambio sólo realiza el reemplazo de todos las apariciones
-% en la fórmula propuesta, de la variable proposicional del soporte 
-% por su correspondiente valor de verdad. 
 
-
-% DEFINICIÓN DE OPERADORES
 :-op(0,yfx,-).
 :-op(700,fy, /-).
 :-op(700,xfy,/-).
@@ -50,11 +42,8 @@
 
 /- Y:L   :- !,mkIndex(I), if_then_else(completarf(Y,Yf),true,(error_sintactico,!,false)),!, []:[]:I => Yf:[]:_:L,!.
 
-X /- Y :- !,mkIndex(I), if_then_else((completart(X,XP,XA),completarf(Y,Yf)), true, (error_sintactico,!,false)),!,
+X /- Y:L :- !,mkIndex(I), if_then_else((completart(X,XP,XA),completarf(Y,Yf)), true, (error_sintactico,!,false)),!,
 	putAtomos(I,XA), XP:XA:I => Yf:[]:_:L.
-
-
-%REGLAS DE SECUENTES + RESOLUCIÓN NO-CLAUSAL
 
 
 
@@ -94,7 +83,7 @@ P:PA:I => [(- A  =t)]:Z:strecht(regla_5, - A =t >> A=f,T):LS
 _:_:_ => [(A=N)]:_:contradiccion(regla_8,A=N):L
         :- opuesto(A,N),L is 1,!.
 
-P:PA:I => [(A=N)]:_:contradiccion(regla_82,A=N):L :- opuesto(M,N),member(A=M,PA),L is 1,!.
+_:PA:_ => [(A=N)]:_:contradiccion(regla_82,A=N):L :- opuesto(M,N),member(A=M,PA),L is 1,!.
 
 P:PA:I => [(A=N)]:Z:replace(regla_9,A=N,_,FX,T):LS
 :- 	 
@@ -109,7 +98,7 @@ elegir1(I,A,P,XR2):- elegir(I,N),nth1(N,P,X),rs(X,XR,[A]),
 if_then_else(XR=(V=V),elegir1(I,A,P,XR2),XR2=XR).
 
 
-reduceHs(_,[],[],I).
+reduceHs(_,[],[],_).
 reduceHs(PA,P,PR,I):- formulasAfectadas(I,FA), dHs(P,PE,FA,0), rHs(I,P,PE,PA,FA,PR).
 
 rHs(I,P,PE,PA,[FI|FA],PR):- nth1(FI,P,F),rs(F,FR,PA),
@@ -121,7 +110,7 @@ if_then_else(FR=(V=V),eliminarF(I,FI),actualizarF(I,FI,FR)),
 %actualizarF(FI,FR),
 ins(FR,PE,FI,PRL), rHs(I,P,PRL,PA,FA,PR).
 
-rHs(I,_,PRL,_,[],PRL).
+rHs(_,_,PRL,_,[],PRL).
 
 %elimina de P los atomos afectados [f|fa] y el resultado va a PE
 dHs(P,PE,[F|FA],O):- N is F+(-O),rem(N,P,PI),NO is O+1,dHs(PI,PE,FA,NO).
@@ -304,7 +293,7 @@ elegir1(A,[_|Xs],Z,Zx,W):- elegir1(A,Xs,Z,Zx,W).
 demostrart_thread(S):- thread_create(demostrart,ID ), thread_join(ID,S).
  
  
-demostrartthread:- thread_create( time((read(X), /- X v -X )),ID ), thread_join(ID,S).
+demostrartthread:- thread_create( time((read(X), /- X v -X )),ID ), thread_join(ID,_).
 
 demostrar_thread(S):- thread_create(demostrar,ID ), thread_join(ID,S).
 
