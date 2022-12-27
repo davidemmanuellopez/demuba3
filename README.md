@@ -21,6 +21,7 @@ Copyright (C) 2022  David Emmanuel Lopez
 
 * First, compile extern predicates with compile.sh or compile.bat. You need to have installed swi-prolog. For Ubuntu Linux, you can use "apt-get install swi-prolog" for install.
 * Run demuba3 with demuba3.sh, the script load the foreign library library and consult demuba3.pl.
-* Make a query, like "/- -(a & b) v (a & b):L. ". The query example ask if the formula " -(a & b) v (a & b) " is tautology, the L variable return the number of rules used by the demonstrator, when return sucess (taut), that is for performance experiments.
+* Make a query, like "/- -(a & b) v (a & b):L. ". The query example ask if the formula " -(a & b) v (a & b) " is tautology, the L variable return the number of rules used by the demonstrator, when return sucess (tautology), that is for performance experiments.
+* For batch test, you can use "./tester --dem=demuba3 --indexlib=index --set=c2670 --type=demostrart --limit=130 " as example. The tester must be compiled before. In this exmaple, the demuba3.pl demostrator will be used, the index.so/.dll library will be used, to test the tests case "tests/c2670" created by iscas85_formula_generator. The type of test is demostrart, in this kind of test, every formula in test cases will be used as "F v -F" to generate tautologies. Limit specify the number of test cases readed on test set.
 
 
