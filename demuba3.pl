@@ -26,6 +26,7 @@
 :-op(500,yfx,<->).
 :-op(600,yfx,:=).
 :-op(600,yfx,=).
+:-op(600,yfx,<=>).
 :-op(600,xfx,=>).
 :-op(400,xfy,v).
 :-op(300,xfy,&).
@@ -40,11 +41,13 @@
 
 %PARTE PRINCIPAL. 
 
+
+X <=> Y :- /- (-X v Y) & (-Y v X):_.
+
 /- Y:L   :- !,mkIndex(I), if_then_else(completarf(Y,Yf),true,(error_sintactico,!,false)),!, []:[]:I => Yf:[]:_:L,!.
 
 X /- Y:L :- !,mkIndex(I), if_then_else((completart(X,XP,XA),completarf(Y,Yf)), true, (error_sintactico,!,false)),!,
-	putAtomos(I,XA), XP:XA:I => Yf:[]:_:L.
-
+	putAtomo(I,XA), XP:XA:I => Yf:[]:_:L.
 
 
 %si es atomico B, lo agrego a la lista de atomos.
